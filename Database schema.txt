@@ -1,0 +1,15 @@
+
+
+
+
+Entity : 
+			User{UserID, Name,Mob,Email,PAsss, College,Qlifictn, year of passing, City},
+			Admin{AdminId, CompanyName,AdminName,Email, Password},
+			Test{testId, AdminId,TestDate, TestDuration, },
+			Question{Qid, TestId, QLevel, Question, Q1,Q2,Q3,Q4,QC},
+			Attempt{AttemptId, user_id, test_id, level? , L1(0),L1OutOff,L2(0),L2OutOff,L3(0),L3OutOff },  
+
+
+
+
+
