@@ -1,7 +1,30 @@
-<p>landingpage works!</p>
+<nav>
+    <p class="nav-item"><a [routerLink]="['/auth/login']">Login</a></p>
+    <p class="nav-item"><a [routerLink]="['/auth/register']">Register</a></p>
+</nav>
+<div class="main">
+    <div class="contents">
+        <div class="points">
+            <img src="../../assets/administrativeWork.png" width="260px" height="240px">
+            <span class="imgleft">
+                <h2>Get better Everytime</h2>
+                <p>Attempt test from your home and analyze the result. Learn from your mistake and get better everytime.</p>
+            </span>
+        </div>
+        <div class="points">
+            <span class="imgright">
+                <h2>Grab what you deserve</h2>
+                <p>Get good scores and wait for a call from a recruiter. Our Recruites look for students who have score good.</p>
+            </span>
+            <img src="../../assets/onlineTest.png" width="300px" height="240px">
+        </div>
+        <div class="points">
+            <img src="../../assets/attendance.gif" width="260px" height="240px">
+            <span class="imgleft">
+                <h2>Stay home, stay safe</h2>
+                <p>Attempt test for major companies at the convinience of being at home.</p>
+            </span>
+        </div>
+    </div>
 
-<a [routerLink]="['/auth/login']">Login</a>&nbsp;&nbsp;&nbsp;
-<a [routerLink]="['/auth/register']">Register</a>
-<router-outlet></router-outlet>
-
-
+</div>

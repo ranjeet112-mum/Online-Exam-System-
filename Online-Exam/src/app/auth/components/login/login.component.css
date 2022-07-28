@@ -1,0 +1,84 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 350px;
+    height: 350px;
+    /* background-color: aqua; */
+    /* padding: 20%; */
+}
+form {
+    width: 100%;
+    /* background-color: blueviolet; */
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.set1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    
+}
+.set2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    flex-direction: column;
+    color: grey;
+}
+.input {
+    width: 80%;
+    height: 15%;
+    border : 1px solid black;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.submit {
+    width: 30%;
+    height: 35%;
+    background-color: #4bb543;
+    border: 0.75px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    color:black;
+}
+.submit:hover {
+    color : #0eab03;
+    background-color: snow;
+    box-shadow: 3px 3px rgb(79, 82, 82);
+    font-size : 1em;
+    font-weight: 500;
+
+}
+
+.labels, .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.labels{
+    flex:1;
+    width: 20%;
+}
+.inputs{
+    flex:2;
+}
+
+
+.forgotpassword:hover , .register:hover {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    /* color: inherit; */
+}

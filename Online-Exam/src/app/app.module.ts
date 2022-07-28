@@ -5,20 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-
+import { NotFoundModule } from './not-found/not-found.module';
+import { AuthService } from './auth/auth.service';
+import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
     LandingpageComponent,
-    NotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    UserModule,
+    AdminModule,
+    NotFoundModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

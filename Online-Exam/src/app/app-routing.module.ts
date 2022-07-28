@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { RegisterComponent } from './auth/components/register/register.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { 
@@ -11,10 +8,6 @@ const routes: Routes = [
   },{
     path: 'landingpage', component : LandingpageComponent
   }
-  // ,  {
-    // path:'**', component  : NotfoundComponent
-  // }
-
 ];
 
 @NgModule({

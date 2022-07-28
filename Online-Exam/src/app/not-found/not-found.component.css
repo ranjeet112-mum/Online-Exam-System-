@@ -1,0 +1,15 @@
+.main{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    flex-direction: column;
+    align-items:center;
+}
+
+img{
+    margin: 2%;
+}
+a {
+    text-decoration: none;
+    color: rgb(60, 59, 59);
+}
