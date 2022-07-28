@@ -10,7 +10,7 @@ export class AuthService {
   url : string = 'http://localhost:xxxxx/';
   constructor() { }
 
-  check(login : Login ) : Boolean{
+  Authenticate(login : Login ) : Boolean{
 /* 
 Todo: 1 work on the Api call
 Todo: 2 work on the register frontend and component class logic (also create an interface to work)
@@ -20,5 +20,9 @@ Todo: 3 work on the password frontend and component class
     
     return (login.username === 'hello' && login.password === 'world'); 
   } 
+
+  Exists(username : string) {
+
+  }
 
 }

@@ -18,29 +18,41 @@
       name="username"
       id="username"
       placeholder="ranjeet112pandey@gmail.com"
-      required
       [(ngModel)] = "login.username"
+      required
     />
+    
     <input
       type="password"
       class="input"
       name="password"
       id="password"
       placeholder="*******"
-      required
       [(ngModel)] = "login.password"
+      required
     />
     <span>
       <input type="radio" name="role" value="user" checked [(ngModel)] = "login.role"> User&nbsp;&nbsp;&nbsp;
       <input type="radio" name="role" value="admin" [(ngModel)] = "login.role"> Admin
     </span>
+    
+  </div>
+  <div style="flex:.1; " class="labels" id="message">
+    <p id="usrmessage" name="usrmessage">Please Enter</p>
+    <p id="pswdmessage" name="pswdmessage">Please Enter</p>
+    <p> </p>
   </div>
 </div>
   <div class="set2">
-      <button type="submit" value="Login" class="submit">Login</button>
-      <!-- (click)="ForgotPassword(login.username)" -->
+      <input type="submit" value="Login" class="submit">
+      <!-- Login</button> -->
+      <!-- (click)="ForgotPassword(login.username)"
+      [routerLink]="['/auth/forgotpassword']" -->
       <p><a 
-        class="forgotpassword" [routerLink]="['/auth/forgotpassword']">Forgot password? </a> | <a class="register" [routerLink]="['/auth/register']">New Here</a></p>
+        class="forgotpassword" (click)="ForgotPassword(login.username)">Forgot password? </a> | <a class="register" [routerLink]="['/auth/register']">New Here?</a></p>
+  </div>
+  <div class="errormessage">
+    <p id="notfound" name="notfound">Either username or password is incorrect</p>
   </div>
 </form>
 </div>

@@ -31,11 +31,20 @@ form {
     color: grey;
 }
 .input {
-    width: 80%;
+    width: 95%;
     height: 15%;
     border : 1px solid black;
     border-radius: 9px;
     text-align: center;
+}
+.errormessage, #message{
+    text-align: center;
+    color : rgb(237,67,55);
+    font-size:0.8em;
+}
+#usrmessage, #pswdmessage, #notfound {
+    /* visibility: none; */
+    visibility: hidden;
 }
 
 .submit {
@@ -78,7 +87,8 @@ form {
     color: blue;
 }
 
-a {
+a, .forgotpassword {
     text-decoration: none;
+    cursor: pointer;
     /* color: inherit; */
 }
