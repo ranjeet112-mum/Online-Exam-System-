@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #ecf0f1;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+  hr {
+    width: 95%;
+    margin: 0%;
+  }

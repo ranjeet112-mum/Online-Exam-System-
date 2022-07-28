@@ -1,1 +1,35 @@
-<h1>Hey guy its our project, By Group 2 :)</h1>
+    <header>
+      <img
+        src="../assets/logo.png"
+        width="120px"
+        class="logo"
+        [routerLink] = "['/']"
+        style="cursor: pointer;"
+      />
+    </header>
+    <main>
+  <router-outlet></router-outlet>      
+    </main> 
+    <footer>
+      <div class="footerList">
+        <p class="footerHeading">Contact us</p>
+        <a href="mailto:xyz.lmn@lntinfotech.com" class="contactLink">
+          <p>xyz.lmn@lntinfotech.com</p>
+        </a>
+        <a href="tel:+917303002608" class="contactLink">
+          <p>7303002608</p>
+        </a>
+      </div>
+      <div class="footerList">
+        <p class="footerHeading">About us</p>
+        <p>
+          We are <em>Team 2</em> of <em>GET_1026</em> .Net batch<br />
+          This is a Gladiator Project that is part of our evaluations
+        </p>
+      </div>
+      <div class="footerList">
+        <p class="footerHeading">Team</p>
+        <p>Revati Patil, Ranjit Pandey<br /><br />Shivam, Ganesh Mediddodi</p>
+      </div>
+    </footer>
+  

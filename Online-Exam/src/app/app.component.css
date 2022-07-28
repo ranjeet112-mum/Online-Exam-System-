@@ -1,0 +1,48 @@
+
+  header {
+    background-color: #9da19e;
+    height: 100px;
+    align-self: center;
+    text-align: center;
+  }
+  .logo {
+    margin-top: -10px;
+  }
+  sup {
+    color: red;
+    font-size: 1.2em;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    display: inline;
+    cursor: pointer;
+    color: #ecf0f1;
+  }
+  
+  .contactLink:hover {
+    color: snow;
+    font-weight: 500;
+    box-shadow: 0;
+    font-size: 1.1em;
+  }
+
+  footer {
+    background-color: black;
+    color: snow;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .footerList {
+    text-align: center;
+  }
+  .footerHeading {
+    font-size: 500;
+    text-decoration: underline;
+    font-size: 1.25em;
+  }
