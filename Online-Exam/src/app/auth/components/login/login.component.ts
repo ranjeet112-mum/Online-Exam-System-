@@ -41,13 +41,17 @@ export class LoginComponent implements OnInit {
       this.paswordMessage.style.visibility = 'visible';
     } else {
       // todo: call the service and if user doesnt exists set visisbility of #notfound to visible
-      console.log(login);
-      console.log(this.auth.Authenticate(this.login));
-      if (this.auth.Authenticate(this.login)) {
+
+      this.auth.Authenticate(login).subscribe(() => {
         this.route.navigate(['/user/dashboard']);
-      } else {
+      },err => {
+        console.log(err);
+        this.notFound.innerText = err.error;
         this.notFound.style.visibility = 'visible';
-      }
+        
+      })
+
+
     }
   }
   ForgotPassword(username: string) {

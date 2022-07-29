@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Login } from './login';
+import { ErrorHandler } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  url : string = 'http://localhost:xxxxx/';
-  constructor() { }
+  url : string = 'http://localhost:5000/';
 
-  Authenticate(login : Login ) : Boolean{
-/* 
-Todo: 1 work on the Api call
-Todo: 2 work on the register frontend and component class logic (also create an interface to work)
-Todo: 3 work on the password frontend and component class
-*/
-    console.log("inside service");
+  constructor(private http : HttpClient) { }
+  // constructor() { }
+
+  Authenticate(login : Login ) : Observable<any>{
     
-    return (login.username === 'hello' && login.password === 'world'); 
+    return this.http.post<any>(this.url+'api/user/userlogin',login)
+    .pipe(catchError(this.ErrorHandler)); 
   } 
+
+  ErrorHandler(error: HttpErrorResponse){
+    return throwError(error || 'Internal Server Error!')
+  }
 
   Exists(username : string) {
 

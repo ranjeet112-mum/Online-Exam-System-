@@ -9,6 +9,7 @@ import { NotFoundModule } from './not-found/not-found.module';
 import { AuthService } from './auth/auth.service';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { AdminModule } from './admin/admin.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AuthModule,
     UserModule,
