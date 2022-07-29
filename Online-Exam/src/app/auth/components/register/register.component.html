@@ -1,36 +1,124 @@
 <div class="form">
     
 
+  <h2 style="text-align: center;">Register here</h2>
 
-    <form (ngSubmit)="Register()" #registerform="ngForm">
-      <div class="set1">
-        <div class="labels">
-        <label for="username">Username : </label>
-        <label for="username">Password : </label>
-      </div>
-    
-      <div class="inputs">
-        <input
-          type="text"
-          class="input"
-          name="username"
-          id="username"
-          placeholder="ranjeet112pandey@gmail.com"
-          required
-        />
-        <input
-          type="password"
-          class="input"
-          name="password"
-          id="password"
-          placeholder="*******"
-          required
-        />
-      </div>
+  <!-- (ngSubmit)="" -->
+  <form  #loginform="ngForm">
+    <div class="set1">
+      <div class="labels">
+      <label for="Name">Full Name: </label>
+      <label for="dob">Date of birth: </label>
+      <label for="gender">Gender: </label>
+      <label for="email">Email: </label>
+      <label for="phoneno">Phone No: </label>
+      <label for="qualifications">Qualifications: </label>
+      <label for="collegename">College Name: </label>
+      <label for="yearofpassing">Passing Year: </label>
+      <label for="city">City : </label>
+  
     </div>
-      <div class="set2">
-          <button type="submit" value="Login" class="submit">Login</button>
-          <p><a class="forgotpassword" [routerLink]="['/']">forgot password? </a> | <a class="register" [routerLink]="['/auth/register']">New Here</a></p>
-      </div>
-    </form>
+  
+    <div class="inputs">
+      <input
+        type="text"
+        class="input"
+        name="Name"
+        id="Name"
+        placeholder="John Arryn"
+        
+        required
+      />
+      <!-- [(ngModel)] = "login.username" -->
+      <input
+        type="date"
+        class="input"
+        name="dob"
+        id="dob"
+        placeholder="166/05/2000"
+        required
+      />
+      <!-- [(ngModel)] = "login.password" -->
+      <span style="font-size: 12px;">
+        <input class="radio" type="radio" name="gender" value="male" checked > Male&nbsp;&nbsp;&nbsp;
+        <input class="radio" type="radio" name="gender" value="female" > Female
+        <input class="radio" type="radio" name="gender" value="others" > others
+      </span>
+      <input
+        type="email"
+        class="input"
+        name="email"
+        id="email"
+        placeholder="John.Arryn@gmail.com"
+        
+        required
+      />
+      <!-- [(ngModel)] = "login.username" -->
+      <input
+        type="number"
+        class="input"
+        name="phoneno"
+        id="phoneno"
+        placeholder="7303002601"
+        required
+      />
+      <input
+        type="text"
+        class="input"
+        name="qualifications"
+        id="qualifications"
+        placeholder="Bachelors of Engineering"
+        
+        required
+      />
+      <!-- [(ngModel)] = "login.username" -->
+      <input
+        type="text"
+        class="input"
+        name="collegename"
+        id="collegename"
+        placeholder="St. Xaviers College"
+        required
+      />
+      <input
+      type="number"
+      class="input"
+      name="yearofpassing"
+      id="yearofpassing"
+      placeholder="2022"
+      
+      required
+    />
+    <!-- [(ngModel)] = "login.username" -->
+    <input
+      type="text"
+      class="input"
+      name="city"
+      id="city"
+      placeholder="Mumbai"
+      required
+    />
+      <!-- [(ngModel)] = "login.role -->
     </div>
+    <div style="flex:.1; " class="labels" id="message">
+      <p id="namemessage" name="namemessage">Please Enter</p>
+      <p id="dobmessage" name="dobmessage">Please Enter</p>
+      <p id="gendermessage" name="gendermessage">Please Enter</p>
+      <p id="emailmessage" name="emailmessage">Please Enter</p>
+      <p id="phonenomessage" name="phonenomessage">Please Enter</p>
+      <p id="qualificationsmessage" name="qualificationsmessage">Please Enter</p>
+      <p id="collegemessage" name="collegemessage">Please Enter</p>
+      <p id="yearofpassingmessage" name="yearofpassingmessage">Please Enter</p>
+      <p id="citymessage" name="citymessage">Please Enter</p>
+      <p> </p>
+    </div>
+  </div>
+    <div class="set2">
+        <input type="submit" value="Register" class="submit">
+        <p><a class="register" [routerLink]="['/auth/register']">Already Registered?</a></p>
+    </div>
+    <div class="errormessage">
+      <p id="notfound" name="notfound"></p>
+    </div>
+  </form>
+  </div>

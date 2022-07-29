@@ -1,16 +1,16 @@
 .form {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
     width: 350px;
-    height: 350px;
+    height: 650px;
     /* background-color: aqua; */
     /* padding: 20%; */
 }
 form {
     width: 100%;
     /* background-color: blueviolet; */
-    height: 300px;
+    height: 600px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -19,23 +19,32 @@ form {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 60%;
+    height: 80%;
     
 }
 .set2{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30%;
+    height: 15%;
     flex-direction: column;
     color: grey;
 }
 .input {
-    width: 80%;
-    height: 15%;
+    width: 95%;
+    height: 4.5%;
     border : 1px solid black;
     border-radius: 9px;
     text-align: center;
+}
+.errormessage, #message{
+    text-align: center;
+    color : rgb(237,67,55);
+    font-size:0.8em;
+}
+#namemessage, #gendermessage,#dobmessage, #emailmessage,#phonenomessage, #qualificationsmessage,#collegemessage, #yearofpassingmessage,#citymessage, #notfound {
+    /* visibility: none; */
+    visibility: hidden;
 }
 
 .submit {
@@ -57,8 +66,8 @@ form {
 }
 
 .labels, .inputs {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -68,6 +77,7 @@ form {
 .labels{
     flex:1;
     width: 20%;
+    align-items:flex-end;
 }
 .inputs{
     flex:2;
@@ -78,7 +88,8 @@ form {
     color: blue;
 }
 
-a {
+a, .forgotpassword {
     text-decoration: none;
+    cursor: pointer;
     /* color: inherit; */
 }
