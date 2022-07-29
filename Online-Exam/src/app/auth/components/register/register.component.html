@@ -4,7 +4,7 @@
   <h2 style="text-align: center;">Register here</h2>
 
   <!-- (ngSubmit)="" -->
-  <form  #loginform="ngForm">
+  <form (ngSubmit)="Register(register)" #registerform="ngForm">
     <div class="set1">
       <div class="labels">
       <label for="Name">Full Name: </label>
@@ -26,7 +26,7 @@
         name="Name"
         id="Name"
         placeholder="John Arryn"
-        
+        [(ngModel)] = "register.name"
         required
       />
       <!-- [(ngModel)] = "login.username" -->
@@ -35,14 +35,14 @@
         class="input"
         name="dob"
         id="dob"
-        placeholder="166/05/2000"
+        [(ngModel)] = "register.dob"
         required
       />
       <!-- [(ngModel)] = "login.password" -->
       <span style="font-size: 12px;">
-        <input class="radio" type="radio" name="gender" value="male" checked > Male&nbsp;&nbsp;&nbsp;
-        <input class="radio" type="radio" name="gender" value="female" > Female
-        <input class="radio" type="radio" name="gender" value="others" > others
+        <input class="radio" type="radio" name="gender" value="male" checked [(ngModel)] = "register.gender"> Male&nbsp;&nbsp;&nbsp;
+        <input class="radio" type="radio" name="gender" value="female" [(ngModel)] = "register.gender"> Female
+        <input class="radio" type="radio" name="gender" value="others" [(ngModel)] = "register.gender"> others
       </span>
       <input
         type="email"
@@ -50,7 +50,7 @@
         name="email"
         id="email"
         placeholder="John.Arryn@gmail.com"
-        
+        [(ngModel)] = "register.email"
         required
       />
       <!-- [(ngModel)] = "login.username" -->
@@ -60,6 +60,7 @@
         name="phoneno"
         id="phoneno"
         placeholder="7303002601"
+        [(ngModel)] = "register.phone"
         required
       />
       <input
@@ -68,7 +69,7 @@
         name="qualifications"
         id="qualifications"
         placeholder="Bachelors of Engineering"
-        
+        [(ngModel)] = "register.qualifications"
         required
       />
       <!-- [(ngModel)] = "login.username" -->
@@ -78,6 +79,7 @@
         name="collegename"
         id="collegename"
         placeholder="St. Xaviers College"
+        [(ngModel)] = "register.collegename"
         required
       />
       <input
@@ -86,7 +88,7 @@
       name="yearofpassing"
       id="yearofpassing"
       placeholder="2022"
-      
+      [(ngModel)] = "register.yearofpassing"
       required
     />
     <!-- [(ngModel)] = "login.username" -->
@@ -96,6 +98,7 @@
       name="city"
       id="city"
       placeholder="Mumbai"
+      [(ngModel)] = "register.city"
       required
     />
       <!-- [(ngModel)] = "login.role -->
@@ -104,8 +107,8 @@
       <p id="namemessage" name="namemessage">Please Enter</p>
       <p id="dobmessage" name="dobmessage">Please Enter</p>
       <p id="gendermessage" name="gendermessage">Please Enter</p>
-      <p id="emailmessage" name="emailmessage">Please Enter</p>
-      <p id="phonenomessage" name="phonenomessage">Please Enter</p>
+      <p id="emailmessage" name="emailmessage">Invalid format</p>
+      <p id="phonenomessage" name="phonenomessage">Invalid format</p>
       <p id="qualificationsmessage" name="qualificationsmessage">Please Enter</p>
       <p id="collegemessage" name="collegemessage">Please Enter</p>
       <p id="yearofpassingmessage" name="yearofpassingmessage">Please Enter</p>
@@ -115,7 +118,7 @@
   </div>
     <div class="set2">
         <input type="submit" value="Register" class="submit">
-        <p><a class="register" [routerLink]="['/auth/register']">Already Registered?</a></p>
+        <p><a class="register" [routerLink]="['/auth/login']">Already Registered?</a></p>
     </div>
     <div class="errormessage">
       <p id="notfound" name="notfound"></p>

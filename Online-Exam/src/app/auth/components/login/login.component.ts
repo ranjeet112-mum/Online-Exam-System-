@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     // this.paswordMessage.style.visibility = "hidden";
 
     // todo: validate if all the fields are filled or not, and set visibility of the same to visible
-    if (login.username === '') {
+    if (login.username === '' || !(login.username.includes('@') && login.username.includes('.'))) {
       this.username.style.backgroundColor = 'rgba(237,67,55,.5)';
       this.usrMessage.style.visibility = 'visible';
     } else if (login.password === '') {
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     } else {
       // todo: call the service to check if the email is present or not
 
-      this.route.navigate(['/auth/forgotpassword']);
+      this.route.navigate(['/auth/resetpassword',username]);
     }
   }
 }
