@@ -42,8 +42,10 @@ export class LoginComponent implements OnInit {
     } else {
       // todo: call the service and if user doesnt exists set visisbility of #notfound to visible
 
-      this.auth.Authenticate(login).subscribe(() => {
-        this.route.navigate(['/user/dashboard']);
+      this.auth.Authenticate(login).subscribe((data) => {
+        console.log(data);
+        // (data);
+        this.route.navigate(['/user/dashboard',{user: data[0].userId }]);
       },err => {
         console.log(err);
         this.notFound.innerText = err.error;

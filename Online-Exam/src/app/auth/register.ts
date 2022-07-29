@@ -1,11 +1,13 @@
 export interface Register {
     name : string;
-    dob : string;
+    dateofbirth : string;
     gender : string;
     email : string;
     phone : string;
-    qualifications : string;
-    collegename : string;
+    qualification : string;
+    college : string;
     yearofpassing : string;
     city : string;
+    verified: number;
+    password : string;
 }

@@ -11,19 +11,23 @@ import { Register } from '../../register';
 export class RegisterComponent implements OnInit {
   register: Register = {
     name: '',
-    dob: '',
+    dateofbirth: '',
     gender: 'male',
     email: '',
     phone: '',
-    qualifications: '',
-    collegename: '',
+    qualification: '',
+    college: '',
     yearofpassing: '',
     city: '',
+    verified : 0,
+    password: ''
   };
   name: any;
   dob: any;
   gender: any;
   email: any;
+  password: any;
+  confpassword: any;
   phone: any;
   qualifications: any;
   collegename: any;
@@ -33,6 +37,8 @@ export class RegisterComponent implements OnInit {
   dobmessage: any;
   gendermessage: any;
   emailmessage: any;
+  passwordmessage: any;
+  cnfpasswordmessage: any;
   phonemessage: any;
   qualificationsmessage: any;
   collegenamemessage: any;
@@ -40,6 +46,7 @@ export class RegisterComponent implements OnInit {
   citymessage: any;
   red: string = 'rgba(237,67,55,.5)';
   white: string = 'rgba(255,255,255,1)';
+  cnfpassword : string = '';
 
   constructor(private auth: AuthService, private route: Router) {}
 
@@ -48,6 +55,8 @@ export class RegisterComponent implements OnInit {
     this.dob = this.getElement('dob').style;
     this.gender = this.getElement('gender').style;
     this.email = this.getElement('email').style;
+    this.password = this.getElement('password').style;
+    this.confpassword = this.getElement('cnfpassword').style;
     this.phone = this.getElement('phoneno').style;
     this.qualifications = this.getElement('qualifications').style;
     this.collegename = this.getElement('collegename').style;
@@ -57,6 +66,8 @@ export class RegisterComponent implements OnInit {
     this.dobmessage = this.getElement('dobmessage').style;
     this.gendermessage = this.getElement('gendermessage').style;
     this.emailmessage = this.getElement('emailmessage').style;
+    this.passwordmessage = this.getElement('passwordmessage').style;
+    this.cnfpasswordmessage = this.getElement('cnfpasswordmessage').style;
     this.phonemessage = this.getElement('phonenomessage').style;
     this.qualificationsmessage = this.getElement('qualificationsmessage').style;
     this.collegenamemessage = this.getElement('collegemessage').style;
@@ -73,6 +84,8 @@ export class RegisterComponent implements OnInit {
     this.dob.backgroundColor = this.white;
     this.gender.backgroundColor = this.white;
     this.email.backgroundColor = this.white;
+    this.password.backgroundColor = this.white;
+    this.confpassword.backgroundColor = this.white;
     this.phone.backgroundColor = this.white;
     this.qualifications.backgroundColor = this.white;
     this.collegename.backgroundColor = this.white;
@@ -84,28 +97,29 @@ export class RegisterComponent implements OnInit {
     if (register.name === '') {
       this.name.backgroundColor = this.red;
       this.namemessage.visibility = 'visible';
-    } else if (register.dob === '') {
+    } else if (register.dateofbirth === '') {
       this.dob.backgroundColor = this.red;
       this.dobmessage.visibility = 'visible';
     } else if (register.gender === '') {
       this.gender.backgroundColor = this.red;
       this.gendermessage.visibility = 'visible';
     } else if (
-      !(register.email.includes('@') && register.email.includes('.')) ||
-      register.email === ''
-    ) {
+      !(register.email.includes('@') && register.email.includes('.')) || register.email === '' ) {
       this.email.backgroundColor = this.red;
       this.emailmessage.visibility = 'visible';
-    } else if (register.phone === '' || register.phone.length != 10) {
-      console.log(register.phone.length);
-      console.log(typeof register.phone);
-
+    } else if (register.password === '') {
+      this.password.backgroundColor = this.red;
+      this.passwordmessage.visibility = 'visible';
+    }else if (this.cnfpassword === '' || (register.password != this.cnfpassword)) {
+      this.confpassword.backgroundColor = this.red;
+      this.cnfpasswordmessage.visibility = 'visible';
+    }else if (register.phone === '' || (register.phone.length != 10)) {
       this.phone.backgroundColor = this.red;
       this.phonemessage.visibility = 'visible';
-    } else if (register.qualifications === '') {
+    } else if (register.qualification === '') {
       this.qualifications.backgroundColor = this.red;
       this.qualificationsmessage.visibility = 'visible';
-    } else if (register.collegename === '') {
+    } else if (register.college === '') {
       this.collegename.backgroundColor = this.red;
       this.collegenamemessage.visibility = 'visible';
     } else if (register.yearofpassing === '') {
@@ -118,6 +132,18 @@ export class RegisterComponent implements OnInit {
       this.register = register;
 
       // Todo : call api here
+      this.auth.Register(register)
+      .subscribe((data) => {
+        console.log(data);
+        alert("Registeration successful");
+        this.route.navigate(['/auth/login'])
+        
+      }, err => {
+        this.getElement('notfound').innerText = err.error;
+        this.getElement('notfound').style.visibility = 'visible';
+        console.log(err);
+          
+      })
       console.log('register');
       console.log(register);
     }

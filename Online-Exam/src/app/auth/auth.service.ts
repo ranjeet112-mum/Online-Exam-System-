@@ -4,20 +4,21 @@ import { Login } from './login';
 import { ErrorHandler } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
+import { Register } from './register';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  url : string = 'http://localhost:5000/';
+  url : string = 'http://localhost:5000/api/';
 
   constructor(private http : HttpClient) { }
   // constructor() { }
 
   Authenticate(login : Login ) : Observable<any>{
     
-    return this.http.post<any>(this.url+'api/user/userlogin',login)
+    return this.http.post<any>(this.url+'user/userlogin',login)
     .pipe(catchError(this.ErrorHandler)); 
   } 
 
@@ -27,6 +28,11 @@ export class AuthService {
 
   Exists(username : string) {
 
+  }
+
+  Register(register :Register){
+    return this.http.post<Register>(this.url+'user/adduser',register)
+    .pipe(catchError(this.ErrorHandler))
   }
 
 }

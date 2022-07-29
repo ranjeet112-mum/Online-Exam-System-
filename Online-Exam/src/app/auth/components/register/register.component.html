@@ -11,6 +11,8 @@
       <label for="dob">Date of birth: </label>
       <label for="gender">Gender: </label>
       <label for="email">Email: </label>
+      <label for="password">password: </label>
+      <label for="cnfpassword">cnf password: </label>
       <label for="phoneno">Phone No: </label>
       <label for="qualifications">Qualifications: </label>
       <label for="collegename">College Name: </label>
@@ -35,7 +37,7 @@
         class="input"
         name="dob"
         id="dob"
-        [(ngModel)] = "register.dob"
+        [(ngModel)] = "register.dateofbirth"
         required
       />
       <!-- [(ngModel)] = "login.password" -->
@@ -53,6 +55,24 @@
         [(ngModel)] = "register.email"
         required
       />
+      <input
+        type="password"
+        class="input"
+        name="password"
+        id="password"
+        placeholder="********"
+        [(ngModel)] = "register.password"
+        required
+      />
+      <input
+      type="text"
+      class="input"
+      name="cnfpassword"
+      id="cnfpassword"
+      placeholder="password"
+      [(ngModel)] = "cnfpassword"
+      required
+    />
       <!-- [(ngModel)] = "login.username" -->
       <input
         type="number"
@@ -69,7 +89,7 @@
         name="qualifications"
         id="qualifications"
         placeholder="Bachelors of Engineering"
-        [(ngModel)] = "register.qualifications"
+        [(ngModel)] = "register.qualification"
         required
       />
       <!-- [(ngModel)] = "login.username" -->
@@ -79,7 +99,7 @@
         name="collegename"
         id="collegename"
         placeholder="St. Xaviers College"
-        [(ngModel)] = "register.collegename"
+        [(ngModel)] = "register.college"
         required
       />
       <input
@@ -108,6 +128,8 @@
       <p id="dobmessage" name="dobmessage">Please Enter</p>
       <p id="gendermessage" name="gendermessage">Please Enter</p>
       <p id="emailmessage" name="emailmessage">Invalid format</p>
+      <p id="passwordmessage" name="password">Please fill</p>
+      <p id="cnfpasswordmessage" name="cnfpassword">Please fill</p>
       <p id="phonenomessage" name="phonenomessage">Invalid format</p>
       <p id="qualificationsmessage" name="qualificationsmessage">Please Enter</p>
       <p id="collegemessage" name="collegemessage">Please Enter</p>
