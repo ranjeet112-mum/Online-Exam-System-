@@ -1,1 +1,33 @@
-<p>removetest works!</p>
+<div class="greeting">
+    <h2 class="welcome">Delete a Test!</h2>
+    <div class="greetingBox">
+      <p class="greetingMessage">Hello {{name}},</p>
+      <span class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></span>
+    </div>
+  </div>
+  <div class="action">
+    <div class="formBox">
+      <form class="delete-form" (ngSubmit)="deletee(testId)">
+        <div class="createTestForm">
+          <div class="labels">
+            <label for="Name">Subject name<sup>*</sup> :</label>
+            <!-- <label for="Date">Password<sup>*</sup> :</label> -->
+          </div>
+          <div class="inputs">
+            <!-- <input type="text" name="Name" placeholder="Java/.Net/Sql" /> -->
+            <select name="test" [(ngModel)]="testId">
+                <option *ngFor="let test of testlist" value={{test.id}}>{{test.subject}}</option>
+            </select>
+            <!-- <input type="password" name="password" /> -->
+            
+          </div>
+        </div>
+        <hr />
+
+        <div class="submitArea">
+          <button [routerLink]="['/admin/dashboard']" type="button" class="submit-button">Cancel</button>
+          <button type="submit" class="cancel-button">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>

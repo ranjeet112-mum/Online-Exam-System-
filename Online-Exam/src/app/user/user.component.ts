@@ -11,8 +11,11 @@ export class UserComponent implements OnInit {
   constructor(private cookie: CookieService, private router : Router) { }
 
   ngOnInit(): void {
-    if(!(this.cookie.get('isAuthorized')))
+    if(!(this.cookie.check('isAuthorized')))
     this.router.navigate(['/auth/login']);
+    else if (this.cookie.get('name') === 'admin' ){
+      this.router.navigate(['/auth/login']);
+    }
   }
 
 }

@@ -25,4 +25,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  Logout(){
+    this.cookie.deleteAll('/', 'http://localhost:5000');
+
+    // this.cookie.deleteAll();
+    // this.cookie.delete('name');
+    // this.cookie.delete('userId');
+    // alert(this.cookie.check('isAuthorized'));
+    this.router.navigate(['/auth/login']);
+  }
+
 }

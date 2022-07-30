@@ -1,1 +1,47 @@
-<p>analyze-results works!</p>
+<div class="greeting">
+    <h2 class="welcome">Analyze Test Results</h2>
+    <div class="greetingBox">
+        <p class="greetingMessage">Hello {{name}},</p>
+        <p class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></p>
+
+
+    </div>
+</div>
+<div class="action">
+    <div class="formBox">
+        <form (ngSubmit)="search()">
+            <div class="formQuery">
+                <span style="display: flex;flex-direction:column;">
+                    test name : 
+                <select name="testId" [(ngModel)]="testId">
+                    <option *ngFor="let test of testlist" value={{test.id}}>{{test.subject}}</option>
+                </select>
+                </span>
+                <span style="display: flex;flex-direction:column;">
+                    Level:
+                <select name="level" [(ngModel)]="level">
+                    <option value={{1}} selected>1</option>
+                    <option value={{2}}>2</option>
+                    <option value={{3}}>3</option>
+                </select>
+                </span>
+                <input type="number" name="cutoff" placeholder="cut off" [(ngModel)]="cutoff">
+                <input type="text" name="qualifications" placeholder="qualifications" [(ngModel)]="qualifications">
+                <input type="text" name="city" placeholder="city" [(ngModel)]="city">
+
+                <input type="submit" >
+            </div>
+        </form>
+        <hr>
+        <h2>Recent Tests</h2>
+
+        <div class="viewArea">
+            
+            <!-- class="individual" -->
+            <div *ngFor="let student of students">
+                congratulations&nbsp;&nbsp;&nbsp; <p>{{student.student}}</p> 
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -46,14 +46,17 @@ export class LoginComponent implements OnInit {
       this.auth.Authenticate(login).subscribe((data) => {
         console.log(data[0]);
         // (data);
-        this.cookie.set("isAuthorized", 'true' );
-        
+       
+        // alert(data[0].name);        
         if(data[0].name === undefined){
+          this.cookie.set("isAuthorized", 'true' );
           this.cookie.set("userId",'1');
           this.cookie.set("name", 'admin' );
         this.route.navigate(['/admin/dashboard']);
 
-        }else {
+        }else if(data[0].name!='' && data[0].userId!=''){
+
+          this.cookie.set("isAuthorized", 'true' );
           this.cookie.set("userId", data[0].userId );
           this.cookie.set("name", data[0].name );
         this.route.navigate(['/user/dashboard']);

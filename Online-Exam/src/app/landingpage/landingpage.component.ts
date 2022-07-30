@@ -12,11 +12,13 @@ export class LandingpageComponent implements OnInit {
   constructor(private cookie : CookieService, private route : Router) { }
 
   ngOnInit(): void {
+    // alert(this.cookie.check('isAuthorized'));
     if(this.cookie.check('isAuthorized')){
       if(this.cookie.get('name') === 'admin')
       {this.route.navigate(['/admin/dashboard'])}
       else {
         this.route.navigate(['/user/dashboard'])
+        // this.route.
       }
     }
   }

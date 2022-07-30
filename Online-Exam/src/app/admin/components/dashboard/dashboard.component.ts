@@ -20,10 +20,13 @@ export class DashboardComponent implements OnInit {
   }
 
   Logout(){
-
-    //Todo: call the log out api 
-    console.log("hey logging you out");
-
+    // alert("logging out")
+    this.cookie.deleteAll();
     
+    // this.cookie.delete('isAuthorized');
+    // this.cookie.delete('name');
+    // this.cookie.delete('userId');
+    // alert(this.cookie.check('isAuthorized'));
+    this.route.navigate(['/auth/login']);
   }
 }

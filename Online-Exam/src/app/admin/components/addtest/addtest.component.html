@@ -1,8 +1,8 @@
 <div class="greeting">
   <h2 class="welcome">Create a new Test</h2>
   <div class="greetingBox">
-    <p class="greetingMessage">Hello Ranjit,</p>
-    <p class="logOut"><a href="#" class="logOutLink">Log Out</a></p>
+    <p class="greetingMessage">Hello {{name}},</p>
+    <p class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></p>
   </div>
 </div>
 <button class="switch" name="filemodeoff" (click)="filemodeoff()">
@@ -28,11 +28,11 @@
             [(ngModel)]="test.subjectname"
             placeholder="Java/.Net/Sql"
           />
-          <input type="date" name="Date" [(ngModel)]="test.examdate" />
+          <input type="date" name="Date" [(ngModel)]="test.testdate" />
           <input
             type="number"
             name="Duration"
-            [(ngModel)]="test.testduration"
+            [(ngModel)]="test.duration"
           />
           <!-- <span>
                             <input type="time" name="Start">
@@ -55,12 +55,13 @@
               #a
               class="custom-file-upload"
               type="file"
-              (change)="test.levelonefile = a.files"
             />
+            <!-- (change)="test.levelonefile = a.files" -->
+
             <input
               type="number"
               name="levelonemarks"
-              [(ngModel)]="test.levelonemarks"
+              [(ngModel)]="test.lonereq"
             />
           </div>
           <div class="fileBrowserProp inputs">
@@ -69,12 +70,13 @@
               #b
               class="custom-file-upload"
               type="file"
-              (change)="test.leveltwofile = b.files"
             />
+            <!-- (change)="test.leveltwofile = b.files" -->
+
             <input
               type="number"
               name="leveltwomarks"
-              [(ngModel)]="test.leveltwomarks"
+              [(ngModel)]="test.ltworeq"
             />
           </div>
           <div class="fileBrowserProp inputs">
@@ -83,12 +85,13 @@
               #c
               class="custom-file-upload"
               type="file"
-              (change)="test.levelthreefile = c.files"
             />
+            <!-- (change)="test.levelthreefile = c.files" -->
+
             <input
               type="number"
               name="levelthreemarks"
-              [(ngModel)]="test.levelthreemarks"
+              [(ngModel)]="test.lthreereq"
             />
           </div>
         </div>
@@ -101,7 +104,7 @@
       </div>
     </form>
     
-    <form *ngIf="!filemode" >
+    <form *ngIf="!filemode" (ngSubmit)="addQ(question)" >
       <div class="createTestForm">
         <div class="labels">
           <label>select Test : </label>
@@ -114,20 +117,21 @@
           <label>correct :</label>
         </div>
         <div class="inputs">
-          <select>
-            <option>select a test</option>
+          <select name="testid" [(ngModel)]="question.testid">
+            <!-- <option value="1">select a test</option> -->
+            <option *ngFor="let test of testlist" value = {{test.id}}>{{test.subject}}</option>
           </select>
-          <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+          <select name="level" [(ngModel)]="question.levelid">
+            <option value={{1}}>1</option>
+            <option value={{2}}>2</option>
+            <option value={{3}}>3</option>
           </select>
-          <input type="text" name="question" placeholder="Question?">
-          <input type="text" name="optionone" placeholder="option one">
-          <input type="text" name="optiontwo" placeholder="option two">
-          <input type="text" name="optionthree" placeholder="option three">
-          <input type="text" name="optionfour" placeholder="option four">
-          <input type="text" name="correctans" placeholder="correct answer">
+          <input type="text" name="question" placeholder="Question?" [(ngModel)]="question.question1">
+          <input type="text" name="optionone" placeholder="option one" [(ngModel)]="question.optionsone">
+          <input type="text" name="optiontwo" placeholder="option two" [(ngModel)]="question.optionstwo">
+          <input type="text" name="optionthree" placeholder="option three" [(ngModel)]="question.optionsthree">
+          <input type="text" name="optionfour" placeholder="option four" [(ngModel)]="question.optionsfour">
+          <input type="text" name="correctans" placeholder="correct answer" [(ngModel)]="question.optionscorrect">
         </div>
       </div>
       <div class="submitArea">
