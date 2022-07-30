@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<div class="greeting">
+    <h2 class="welcome">Welcome to dashboard!</h2>
+    <div class="greetingBox">
+        <p class="greetingMessage">Hello Ranjit,</p>
+            <p class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></p>
+
+
+    </div>
+</div>
+<div class="action">
+    <!-- <div class="actionDiv"> -->
+        <div class="miscellaneousBox">
+        <div class="mainBlock"> 
+            <h2 class="welcome">Upcoming Test</h2>
+            <ul>
+                <a href="#" class="upcoming"><li>Java Test </li></a>
+                <a href="#" class="upcoming"><li>.Net Test </li></a>
+                <a href="#" class="upcoming"><li>Communicatons Test </li></a>
+                <a href="#" class="allUpcoming upcoming"><li>All test</li></a>
+            </ul>
+        </div>
+
+        </div>
+        <div class="actionButton">
+            <h2>Action Links</h2>
+            <button [routerLink]="['/admin/addtest']" type="button" class="create">create a new Test</button>
+            <button [routerLink]="['/admin/deletetest']" type="button" class="delete">delete a Test</button>
+            <button [routerLink]="['/admin/analyze']" type="button" class="analyze">Analyze Previous Test</button>
+        </div>
+    <!-- </div> -->
+
+</div>

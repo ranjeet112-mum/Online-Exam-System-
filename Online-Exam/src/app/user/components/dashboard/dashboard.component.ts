@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
-
+// ! take out this service services
   ngOnInit(): void {
     console.log(this.route.snapshot.paramMap.get('user'));
     // todo 

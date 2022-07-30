@@ -12,4 +12,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Logout(){
+
+    //Todo: call the log out api 
+    console.log("hey logging you out");
+    
+  }
 }

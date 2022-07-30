@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { NotFoundModule } from './not-found/not-found.module';
 import { AuthService } from './auth/auth.service';
+import { AdminService } from './admin/admin.service';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminModule,
     NotFoundModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

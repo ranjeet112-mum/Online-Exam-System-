@@ -1,0 +1,143 @@
+<div class="greeting">
+  <h2 class="welcome">Create a new Test</h2>
+  <div class="greetingBox">
+    <p class="greetingMessage">Hello Ranjit,</p>
+    <p class="logOut"><a href="#" class="logOutLink">Log Out</a></p>
+  </div>
+</div>
+<button class="switch" name="filemodeoff" (click)="filemodeoff()">
+  Add questions
+</button>
+<button class="switch" name="filemodeon" (click)="filemodeon()">
+  Create test
+</button>
+<div class="action">
+  <div class="formBox">
+    <form *ngIf="filemode" (ngSubmit)="createTest(test)">
+      <div class="createTestForm">
+        <div class="labels">
+          <label for="Name">Subject name<sup>*</sup> :</label>
+          <label for="Date">Exam date<sup>*</sup> :</label>
+          <label for="Duration">Test duration<sup>*</sup> (in minutes) :</label>
+          <!-- <label for="Start">Test timing<sup>*</sup> :</label> -->
+        </div>
+        <div class="inputs">
+          <input
+            type="text"
+            name="Name"
+            [(ngModel)]="test.subjectname"
+            placeholder="Java/.Net/Sql"
+          />
+          <input type="date" name="Date" [(ngModel)]="test.examdate" />
+          <input
+            type="number"
+            name="Duration"
+            [(ngModel)]="test.testduration"
+          />
+          <!-- <span>
+                            <input type="time" name="Start">
+                            to
+                            <input type="time" name="End">
+                        </span> -->
+        </div>
+      </div>
+      <hr />
+      <div class="getFiles">
+        <div class="fileBrowser">
+          <div class="fileBrowserProp labels">
+            Labels
+            <label> Question file<sup>*</sup> (.csv only) </label>
+            <label> Cut-off Marks<sup>*</sup> </label>
+          </div>
+          <div class="fileBrowserProp inputs">
+            Level 1
+            <input
+              #a
+              class="custom-file-upload"
+              type="file"
+              (change)="test.levelonefile = a.files"
+            />
+            <input
+              type="number"
+              name="levelonemarks"
+              [(ngModel)]="test.levelonemarks"
+            />
+          </div>
+          <div class="fileBrowserProp inputs">
+            Level 2
+            <input
+              #b
+              class="custom-file-upload"
+              type="file"
+              (change)="test.leveltwofile = b.files"
+            />
+            <input
+              type="number"
+              name="leveltwomarks"
+              [(ngModel)]="test.leveltwomarks"
+            />
+          </div>
+          <div class="fileBrowserProp inputs">
+            Level 3
+            <input
+              #c
+              class="custom-file-upload"
+              type="file"
+              (change)="test.levelthreefile = c.files"
+            />
+            <input
+              type="number"
+              name="levelthreemarks"
+              [(ngModel)]="test.levelthreemarks"
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="submitArea">
+        <button type="button" class="cancel-button">Cancel</button>
+        <button type="submit" class="submit-button">Submit</button>
+      </div>
+    </form>
+    
+    <form *ngIf="!filemode" >
+      <div class="createTestForm">
+        <div class="labels">
+          <label>select Test : </label>
+          <label>Level : </label>
+          <label>Question :</label>
+          <label>option 1 :</label>
+          <label>option 2 :</label>
+          <label>option 3 :</label>
+          <label>option 4 :</label>
+          <label>correct :</label>
+        </div>
+        <div class="inputs">
+          <select>
+            <option>select a test</option>
+          </select>
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <input type="text" name="question" placeholder="Question?">
+          <input type="text" name="optionone" placeholder="option one">
+          <input type="text" name="optiontwo" placeholder="option two">
+          <input type="text" name="optionthree" placeholder="option three">
+          <input type="text" name="optionfour" placeholder="option four">
+          <input type="text" name="correctans" placeholder="correct answer">
+        </div>
+      </div>
+      <div class="submitArea">
+        <button class="cancel-button" type="button" [routerLink]="['/admin/dashboard']">Add question</button>
+        
+        <button class="submit-button" type="submit">Add question</button>
+
+      </div>
+    </form>
+
+
+  </div>
+</div>
