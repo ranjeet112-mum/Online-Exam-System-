@@ -7,6 +7,7 @@ import { AddtestComponent } from './components/addtest/addtest.component';
 import { RemovetestComponent } from './components/removetest/removetest.component';
 import { AnalyzeResultsComponent } from './components/analyze-results/analyze-results.component';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './admin.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     AddtestComponent,
     RemovetestComponent,
-    AnalyzeResultsComponent
+    AnalyzeResultsComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

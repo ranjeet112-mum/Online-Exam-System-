@@ -11,6 +11,7 @@ import { AdminService } from './admin/admin.service';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminModule,
     NotFoundModule,
   ],
-  providers: [AuthService, AdminService],
+  providers: [AuthService, AdminService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

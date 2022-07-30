@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,12 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  userId : any;
+  name : any;
+  constructor(private router : Router ,private route: ActivatedRoute,private cookie : CookieService) { }
 // ! take out this service services
   ngOnInit(): void {
     console.log(this.route.snapshot.paramMap.get('user'));
     // todo 
-
+    // console.log(this.cookie.check('isAuthorized'));
+    
+    if(this.cookie.check('isAuthorized')){
+      this.userId = this.cookie.get('userId');
+      this.name = this.cookie.get('name');
+      // alert(this.data); 
+    }
   }
 
 }

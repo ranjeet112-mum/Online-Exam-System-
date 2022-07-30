@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { Login } from '../../login';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Login } from '../../login';
 export class LoginComponent implements OnInit {
   login: Login = { username: '', password: '', role: 'user' };
   isusernameEmpty: boolean = true;
-  constructor(private auth: AuthService, private route: Router) {}
+  constructor(private auth: AuthService, private route: Router, private cookie : CookieService) {}
   username: any;
   usrMessage: any;
   password: any;
@@ -43,9 +44,22 @@ export class LoginComponent implements OnInit {
       // todo: call the service and if user doesnt exists set visisbility of #notfound to visible
 
       this.auth.Authenticate(login).subscribe((data) => {
-        console.log(data);
+        console.log(data[0]);
         // (data);
-        this.route.navigate(['/user/dashboard',{user: data[0].userId }]);
+        this.cookie.set("isAuthorized", 'true' );
+        
+        if(data[0].name === undefined){
+          this.cookie.set("userId",'1');
+          this.cookie.set("name", 'admin' );
+        this.route.navigate(['/admin/dashboard']);
+
+        }else {
+          this.cookie.set("userId", data[0].userId );
+          this.cookie.set("name", data[0].name );
+        this.route.navigate(['/user/dashboard']);
+
+        }
+        // alert(data);
       },err => {
         console.log(err);
         this.notFound.innerText = err.error;
