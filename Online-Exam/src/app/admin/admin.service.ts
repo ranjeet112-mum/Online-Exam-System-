@@ -15,7 +15,7 @@ export class AdminService {
 
   addTest(test : Addtest): Observable<any>{
     console.log("in the service");
-    test.adminid = 1;
+    // test.adminid = 1;
     return this.http.post<any>(this.url+'test/addtest',test)
     .pipe(catchError(this.ErrorHandler));
     
@@ -26,7 +26,7 @@ export class AdminService {
   addQuestion(question : Addquestion) : Observable<any>{
 
     console.log(question);
-    
+    // question.testid = `${question.testid}`;
     return this.http.post<any>(this.url+'questions/addquestion',question)
     .pipe(catchError(this.ErrorHandler));
     // return this.http.post<any>(this.url+'questions/addquestion', question);

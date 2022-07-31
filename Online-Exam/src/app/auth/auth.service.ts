@@ -32,7 +32,12 @@ export class AuthService {
 
   Register(register :Register){
     return this.http.post<Register>(this.url+'user/adduser',register)
-    .pipe(catchError(this.ErrorHandler))
+    .pipe(catchError(this.ErrorHandler));
   }
+
+  forgetPassword(email : string) : Observable<any>{
+    return this.http.get<any>(this.url + `user/resetpassword/${email}`)
+    .pipe(catchError(this.ErrorHandler));
+  } 
 
 }

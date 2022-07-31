@@ -24,7 +24,9 @@ export class AnalyzeResultsComponent implements OnInit {
       // console.log(this.testlist);
       
     }, err => {
-      console.log(err);
+      alert("there was an error while fetching the data please try later.");
+      this.route.navigate(['/admin/dashboard']);
+      // console.log(err);
       
     })
    }
@@ -38,16 +40,22 @@ export class AnalyzeResultsComponent implements OnInit {
   }
 
   search(){
-    console.log(this.testId);
-    console.log(this.level);
-    console.log(this.cutoff);
-    console.log(this.qualifications);
-    console.log(this.city);
+    // console.log(this.testId);
+    // console.log(this.level);
+    // console.log(this.cutoff);
+    // console.log(this.qualifications);
+    // console.log(this.city);
 
     this.admins.getAnalysis(this.testId,this.level,this.cutoff,this.qualifications,this.city)
-    .subscribe(data => {console.log(data);
+    .subscribe(data => {
+        // console.log(data);
       this.students = data;
-    },err => console.log(err)
+      alert(`Fetched ${this.students.length} from your search`);
+    },err => {
+      // console.log(err)
+      alert("Error while fetching the record.");
+      this.route.navigate(['/admin/dashboard']);
+    }
     
     );
 

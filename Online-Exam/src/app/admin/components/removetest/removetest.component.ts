@@ -20,7 +20,9 @@ export class RemovetestComponent implements OnInit {
       // console.log(this.testlist);
       
     }, err => {
-      console.log(err);
+      alert("there was an error while fetching the data please try later.");
+      this.route.navigate(['/admin/dashboard']);
+      
       
     })
    }
@@ -34,10 +36,14 @@ export class RemovetestComponent implements OnInit {
 
   deletee(testId : Number){
     this.admins.deleteTest(testId)
-    .subscribe(data => {console.log(data);
+    .subscribe(data => {
+      // console.log(data);
+      alert("Test successfully delete");      
+      this.route.navigate(['/admin/dashboard']);
     
-    },err => {console.log(err);
-      
+    },err => {
+      // console.log(err);
+      alert("Test successfully delete");      
       this.route.navigate(['/admin/dashboard']);
     });
   }

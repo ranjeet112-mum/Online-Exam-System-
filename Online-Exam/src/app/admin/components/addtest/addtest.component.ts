@@ -47,7 +47,9 @@ export class AddtestComponent implements OnInit {
       // console.log(this.testlist);
       
     }, err => {
-      console.log(err);
+      // console.log(err);
+      alert("there was an error while fetching the data please try later.");
+      this.route.navigate(['/admin/dashboard']);
       
     })
   }
@@ -61,31 +63,40 @@ export class AddtestComponent implements OnInit {
   }
 
   createTest(test : Addtest){
-    console.log("calling the api");
+    // console.log("calling the api");
     
     this.test = test;
+    this.test.adminid = Number(this.adminid); 
     this.admins.addTest(this.test)
     .subscribe(data => {
       // console.log(data);
       alert("successfully creating");
       this.route.navigate(['/admin/dashboard']);
     },err => {
-      alert(err.error);
+      console.log(err);
+      
+      alert(err.error+ " Keep the name short");
+      // this.route.navigate(['/admin/dashboard']);
+
     });
   }
 
   addQ(question : Addquestion){
-    console.log(this.question);
+    // console.log(this.question);
     this.question.levelid = Number(this.question.levelid); 
     
     this.question = question;
-    this.question.testid = 1;
+    this.question.testid = Number(this.question.testid);
     this.admins.addQuestion(this.question).subscribe(data => {
-      // console.log(data);
       alert("successfully saved question");
       this.route.navigate(['/admin/dashboard']);
     },err => {
       console.log(err);
+      
+      alert("somthing went wrong while adding the Question :/");
+      this.route.navigate(['/admin/dashboard']);
+
+      // console.log(err);
       
     })
     

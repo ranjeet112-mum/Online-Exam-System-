@@ -79,8 +79,22 @@ export class LoginComponent implements OnInit {
       this.usrMessage.style.visibility = 'visible';
     } else {
       // todo: call the service to check if the email is present or not
-
-      this.route.navigate(['/auth/resetpassword',username]);
+      this.auth.forgetPassword(username)
+      .subscribe(data => {
+        // console.log(data);
+        
+        alert(data)
+        // this.route.navigate(['/auth/resetpassword']);
+      },err => {
+        // console.log(err);
+        if(err.status === 200)
+        alert(err.error.text);
+        else if(err.status === 404){
+          alert(err.error);
+        }
+      })
+      ;
+      // this.route.navigate(['/auth/resetpassword',username]);
     }
   }
 }
