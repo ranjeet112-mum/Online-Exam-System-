@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     this.password = document.getElementsByName('password')[0];
     this.paswordMessage = document.getElementsByName('pswdmessage')[0];
     this.notFound = document.getElementsByName('notfound')[0];
+    // console.log(sessionStorage.getItem('name'));
+
   }
 
   Authenticate(login: Login) {
@@ -45,20 +47,29 @@ export class LoginComponent implements OnInit {
 
       this.auth.Authenticate(login).subscribe((data) => {
         console.log(data[0]);
+        // this.route.navigate(['/admin/dashboard']);
+
         // (data);
-       
+          //this is to test the session storage!
         // alert(data[0].name);        
         if(data[0].name === undefined){
-          this.cookie.set("isAuthorized", 'true' );
-          this.cookie.set("userId",'1');
-          this.cookie.set("name", 'admin' );
+          // this.cookie.set();
+        sessionStorage.setItem("isAuthorized", 'true' );       
+        sessionStorage.setItem("userId",'1');       
+        sessionStorage.setItem("name", 'admin' );       
+
+          // this.cookie.set();
+          // this.cookie.set();
         this.route.navigate(['/admin/dashboard']);
 
         }else if(data[0].name!='' && data[0].userId!=''){
-
-          this.cookie.set("isAuthorized", 'true' );
-          this.cookie.set("userId", data[0].userId );
-          this.cookie.set("name", data[0].name );
+          sessionStorage.setItem("isAuthorized", 'true' );       
+          sessionStorage.setItem("userId",data[0].userId);       
+          sessionStorage.setItem("name", data[0].name );       
+  
+          // this.cookie.set("isAuthorized", 'true' );
+          // this.cookie.set("userId", data[0].userId );
+          // this.cookie.set("name", data[0].name );
         this.route.navigate(['/user/dashboard']);
 
         }

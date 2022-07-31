@@ -11,9 +11,10 @@ export class AdminComponent implements OnInit {
   constructor(private cookie: CookieService, private router : Router) { }
 
   ngOnInit(): void {
-    if(!(this.cookie.check('isAuthorized')) )
+    if((sessionStorage.getItem('isAuthorized') === null) )
     this.router.navigate(['/auth/login']);
-    else if(this.cookie.get('name') != 'admin') {
+    else if(sessionStorage.getItem('name') != 'admin') {
+      sessionStorage.clear();
       this.router.navigate(['/auth/login']);
     }
   } 

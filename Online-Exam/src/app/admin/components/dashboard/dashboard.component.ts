@@ -13,16 +13,20 @@ export class DashboardComponent implements OnInit {
   constructor(private cookie : CookieService,private route : Router) { }
 
   ngOnInit(): void {
-    if(this.cookie.check('isAuthorized')){
-      this.adminid = this.cookie.get('userId');
-      this.name = this.cookie.get('name');
+    if(sessionStorage.getItem('isAuthorized') != null){
+      this.adminid = sessionStorage.getItem('userId');
+      this.name = sessionStorage.getItem('name');
     }
   }
 
   Logout(){
     // alert("logging out")
-    this.cookie.deleteAll();
-    
+    sessionStorage.clear();
+    // this.cookie.deleteAll();
+    // console.log(sessionStorage.getItem('wrongname'));
+    // console.log(sessionStorage.getItem('name'));
+    // sessionStorage.removeItem('name');
+    // alert("wait here till i come");
     // this.cookie.delete('isAuthorized');
     // this.cookie.delete('name');
     // this.cookie.delete('userId');

@@ -55,9 +55,13 @@ export class AddtestComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    if(this.cookie.check('isAuthorized')){
-      this.adminid = this.cookie.get('userId');
-      this.name = this.cookie.get('name');
+    // if(this.cookie.check('isAuthorized')){
+    //   this.adminid = this.cookie.get('userId');
+    //   this.name = this.cookie.get('name');
+    // }
+    if(sessionStorage.getItem('isAuthorized') != null){
+      this.adminid = sessionStorage.getItem('userId');
+      this.name = sessionStorage.getItem('name');
     }
 
   }
@@ -103,7 +107,8 @@ export class AddtestComponent implements OnInit {
   }
 
   Logout(){
-    this.cookie.deleteAll();
+    // this.cookie.deleteAll();
+    sessionStorage.clear();
     // this.cookie.delete('name');
     // this.cookie.delete('userId');
     // alert(this.cookie.check('isAuthorized'));

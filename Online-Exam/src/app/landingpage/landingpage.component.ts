@@ -13,12 +13,21 @@ export class LandingpageComponent implements OnInit {
 
   ngOnInit(): void {
     // alert(this.cookie.check('isAuthorized'));
-    if(this.cookie.check('isAuthorized')){
-      if(this.cookie.get('name') === 'admin')
-      {this.route.navigate(['/admin/dashboard'])}
-      else {
-        this.route.navigate(['/user/dashboard'])
-        // this.route.
+   //==================================
+    // if(this.cookie.check('isAuthorized')){
+    //   if(this.cookie.get('name') === 'admin')
+    //   {this.route.navigate(['/admin/dashboard'])}
+    //   else {
+    //     this.route.navigate(['/user/dashboard'])
+    //     // this.route.
+    //   }
+    // }
+    //=======================
+    if(sessionStorage.getItem('isAuthorized') != null){
+      if(sessionStorage.getItem('name') === 'admin'){
+        this.route.navigate(['/admin/dashboard'])
+      } else {
+            this.route.navigate(['/user/dashboard'])
       }
     }
   }

@@ -28,9 +28,9 @@ export class RemovetestComponent implements OnInit {
    }
   
   ngOnInit(): void {
-    if(this.cookie.check('isAuthorized')){
-      this.adminid = this.cookie.get('userId');
-      this.name = this.cookie.get('name');
+    if(sessionStorage.getItem('isAuthorized') != null){
+      this.adminid = sessionStorage.getItem('userId');
+      this.name = sessionStorage.getItem('name');
     }
   }
 
@@ -51,7 +51,8 @@ export class RemovetestComponent implements OnInit {
 
 
   Logout(){
-    this.cookie.deleteAll();
+    // this.cookie.deleteAll();
+    sessionStorage.clear();
 
     // this.cookie.delete('isAuthorized');
     // this.cookie.delete('name');

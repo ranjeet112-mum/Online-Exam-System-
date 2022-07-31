@@ -11,8 +11,15 @@ export class AuthComponent implements OnInit {
   constructor(private route : Router,private cookie : CookieService ) { }
 
   ngOnInit(): void {
-    if(this.cookie.check('isAuthorized')){
-      if(this.cookie.get('name') === 'admin')
+    // if(this.cookie.check('isAuthorized')){
+    //   if(this.cookie.get('name') === 'admin')
+    //   {this.route.navigate(['/admin/dashboard'])}
+    //   else {
+    //     this.route.navigate(['/user/dashboard'])
+    //   }
+    // }
+    if(sessionStorage.getItem('isAuthorized') != null ){
+      if(sessionStorage.getItem('name') === 'admin')
       {this.route.navigate(['/admin/dashboard'])}
       else {
         this.route.navigate(['/user/dashboard'])
