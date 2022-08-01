@@ -8,6 +8,7 @@ import { UserComponent } from './user.component';
 // import { RemovetestComponent } from './components/removetest/removetest.component';
 import { AnalyzeResultsComponent } from './components/analyze-results/analyze-results.component';
 import { TestComponent } from './components/test/test.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TestComponent } from './components/test/test.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ]
 })
 export class UserModule { }

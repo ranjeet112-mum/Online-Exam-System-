@@ -54,11 +54,51 @@ export class UserService {
     .pipe(catchError(this.ErrorHandler));
   }
 
+  fetchQuestionsDummy() {
+    return [{
+        question_id : 1,
+        question : "question 1",
+        optionsone : "one",
+        optionstwo : "two",
+        optionsthree : "three",
+        optionsfour : "four",
+
+    },{
+      question_id : 2,
+      question : "question 2",
+      optionsone : "2one",
+      optionstwo : "2two",
+      optionsthree : "2three",
+      optionsfour : "2four",
+
+  },{
+    question_id : 3,
+    question : "question 3",
+    optionsone : "3one",
+    optionstwo : "3two",
+    optionsthree : "3three",
+    optionsfour : "3four",
+
+},{
+  question_id : 4,
+  question : "question 4",
+  optionsone : "4one",
+  optionstwo : "4two",
+  optionsthree : "4three",
+  optionsfour : "4four",
+
+}
+  ]
+  }
+
+  // *this is to verify the answers
   sendAnswers(anslist : any) :Observable<any[]>{
     return this.http.post<any>(this.url+"something",anslist);
   }
 
 
+
+  // *this is for the analysis
   fetchMyAttemptList(userId : any) : Observable<any[]> {
     return this.http.get<any>(this.url+"something")
     .pipe(catchError(this.ErrorHandler));

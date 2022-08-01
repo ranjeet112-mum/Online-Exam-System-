@@ -22,9 +22,11 @@
 </div>
 <div class="action" *ngIf="testlist">
   <div class="actionButton">
+    Choose a test to attempt it:
     <div
+        class="list"
       *ngFor="let test of Tests; index as i"
-      style="cursor: pointer; background-color: green; margin-bottom: 5px"
+      
       (click)="displayTest(test)"
     >
       <p>{{ i + 1 }}.) {{ test.test }}</p>
@@ -42,8 +44,8 @@
         <h3>Test Details</h3>
       <p>
         Test Name : <strong>{{ individualTestDetails.test }}</strong><br />
-        Duration (each level): <strong>{{ individualTestDetails.duration }}</strong><br />
-        Level one marks :<strong>{{ individualTestDetails.l_one_req }}</strong><br />
+        Duration (each level): <strong>{{ individualTestDetails.duration }} mins</strong><br />
+        <!-- Level one marks :<strong>{{ individualTestDetails.l_one_req }}</strong><br /> -->
       </p>
       <!-- <p> {{i+1}}.) {{test.test}} </p> -->
       <button
@@ -62,6 +64,7 @@
     ============================================================== -->
 <div class="action1 action" *ngIf="starttest">
   <div class="actionButton1 actionButton">
+    <p>Welcome to <em>{{testName}}</em> Test, level <strong>{{atLevel}}</strong> </p>
     <h2>Instructions</h2>
     <div class="dos" style="background-color: #aaaaaa">
       <span>
@@ -78,7 +81,7 @@
         <li>Rough sheet paper with pen</li>
       </ul>
     </div>
-    <div class="dos" style="background-color: #eeeeee">
+    <div class="dos" style="background-color: #eeaaaa">
       <span>
         <img
           src="https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png"
@@ -94,45 +97,52 @@
       </ul>
     </div>
     <!-- <div> -->
-      <button class="buttons1" type="submit"> >Start>></button>
+      <button class="buttons1" type="submit" (click)="showQuestion()" > >Start>></button>
     <!-- </div> -->
   </div>
 </div>
 
-<!-- <div class="instruction">
-                <br>
-                 <h2  class="heading"><span style ="border: 1px solid black;background-color: bisque;">Instructions</span></h2>
-                 <br>
-                 <div class="img">
-                    
-                 </div>
-                <div>
-                        <h2>Do's</h2>
-                </div>
-                <div> 
-                    <ul>
-                        <li>Laptop/Desktop (Fully charged)</li>
-                        <li>Uninterrupted Internet Connectivity</li>
-                        <li> Rough sheet paper with pen</li>  
-                    </ul>
-                </div>
-                <br><br>
-                <div class="img1">
-                   <img src="https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png" height="30px"width=30px>
-                </div>
-                <div>
-                    <h2>Dont's</h2>
-                </div>
-                
-                <div>
-                    <ul>
-                        <li>Mobile Phone/Smart watch or any other communication device</li>
-                        <li>Headphones/Ear phones/Microphones</li>
-                        <li>Notebook/Notes in any form</li>  
-                    </ul>
-                </div>
-                <br><br>
-               <div class="start">
-                  <a href="#">Start Test</a>
-               </div>
-        -->
+<div *ngIf="questionspage" class="questions-window">
+    <h2 name="timer"></h2>
+<!-- <p *ngFor="let question of questions">{{question.question_id}}</p> -->
+<div class="questions-navigator">
+
+    <div class="indi-nav" *ngFor="let q of questions" (click)="display(q.question_id)">
+        {{q.question_id}}
+    </div>
+    <!-- <div class="indi-nav" *ngFor="let question of questions">
+        {{question.question_id}}
+    </div><div class="indi-nav" *ngFor="let question of questions">
+        {{question.question_id}}
+    </div>     -->
+</div>
+<div class="question">
+<p>{{qindex}}.) {{question.question}}</p>
+<ul>
+    <li><input type="radio" name="answer" value="{{question.optionsone}}" [(ngModel)]="selectedAns" > {{question.optionsone}}</li>
+    <li><input type="radio" name="answer" value="{{question.optionstwo}}" [(ngModel)]="selectedAns" > {{question.optionstwo}}</li>
+    <li><input type="radio" name="answer" value="{{question.optionsthree}}" [(ngModel)]="selectedAns" > {{question.optionsthree}}</li>
+    <li><input type="radio" name="answer" value="{{question.optionsfour}}" [(ngModel)]="selectedAns" > {{question.optionsfour}}</li>
+    <button class="but buttons" (click)="saveAnswers(question.question_id,selectedAns)">Save</button>
+</ul>
+</div>
+
+</div>
+<div *ngIf="questionspage">
+
+    <button class="endtest" (click)="submitTest(answers)" >submit test</button>
+
+</div>
+<div class="action1 action" *ngIf="Resultpage">
+
+
+    <span *ngIf="isCleared"><p>Congratulations you have cleared the level you may now proceed to next level</p>
+    
+    <button (click)="startTest(testId)"> Next </button>
+        </span>
+    <span *ngIf="!isCleared"><p>Sorry but you did not clear the level. Your Test ends Here! <br>Thank you.</p>
+    <button [routerLink]="['/user/dashboard']"></button>
+    </span>
+</div>
+
+
