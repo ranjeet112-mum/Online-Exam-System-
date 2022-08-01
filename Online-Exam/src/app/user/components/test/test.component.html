@@ -29,7 +29,7 @@
       
       (click)="displayTest(test)"
     >
-      <p>{{ i + 1 }}.) {{ test.test }}</p>
+      <p>{{ i + 1 }}.) {{ test.subjectName }}</p>
     </div>
   </div>
 </div>
@@ -43,7 +43,7 @@
     <div >
         <h3>Test Details</h3>
       <p>
-        Test Name : <strong>{{ individualTestDetails.test }}</strong><br />
+        Test Name : <strong>{{ individualTestDetails.subjectName }}</strong><br />
         Duration (each level): <strong>{{ individualTestDetails.duration }} mins</strong><br />
         <!-- Level one marks :<strong>{{ individualTestDetails.l_one_req }}</strong><br /> -->
       </p>
@@ -107,8 +107,8 @@
 <!-- <p *ngFor="let question of questions">{{question.question_id}}</p> -->
 <div class="questions-navigator">
 
-    <div class="indi-nav" *ngFor="let q of questions" (click)="display(q.question_id)">
-        {{q.question_id}}
+    <div class="indi-nav" *ngFor="let q of questions;index as i" (click)="display(q.id)">
+        {{i+1}}
     </div>
     <!-- <div class="indi-nav" *ngFor="let question of questions">
         {{question.question_id}}
@@ -119,11 +119,11 @@
 <div class="question">
 <p>{{qindex}}.) {{question.question}}</p>
 <ul>
-    <li><input type="radio" name="answer" value="{{question.optionsone}}" [(ngModel)]="selectedAns" > {{question.optionsone}}</li>
-    <li><input type="radio" name="answer" value="{{question.optionstwo}}" [(ngModel)]="selectedAns" > {{question.optionstwo}}</li>
-    <li><input type="radio" name="answer" value="{{question.optionsthree}}" [(ngModel)]="selectedAns" > {{question.optionsthree}}</li>
-    <li><input type="radio" name="answer" value="{{question.optionsfour}}" [(ngModel)]="selectedAns" > {{question.optionsfour}}</li>
-    <button class="but buttons" (click)="saveAnswers(question.question_id,selectedAns)">Save</button>
+    <li><input type="radio" name="answer" value="{{question.option1}}" [(ngModel)]="selectedAns" > {{question.option1}}</li>
+    <li><input type="radio" name="answer" value="{{question.option2}}" [(ngModel)]="selectedAns" > {{question.option2}}</li>
+    <li><input type="radio" name="answer" value="{{question.option3}}" [(ngModel)]="selectedAns" > {{question.option3}}</li>
+    <li><input type="radio" name="answer" value="{{question.option4}}" [(ngModel)]="selectedAns" > {{question.option4}}</li>
+    <button class="but buttons" (click)="saveAnswers(question.id,selectedAns)">Save</button>
 </ul>
 </div>
 
@@ -136,12 +136,12 @@
 <div class="action1 action" *ngIf="Resultpage">
 
 
-    <span *ngIf="isCleared"><p>Congratulations you have cleared the level you may now proceed to next level</p>
+    <span *ngIf="isCleared"><p>Congratulations you have scored {{marks}} and cleared this level, you may now proceed to next level</p>
     
     <button (click)="startTest(testId)"> Next </button>
         </span>
-    <span *ngIf="!isCleared"><p>Sorry but you did not clear the level. Your Test ends Here! <br>Thank you.</p>
-    <button [routerLink]="['/user/dashboard']"></button>
+    <span *ngIf="!isCleared"><p>Sorry but you scored {{marks}} and did not clear this level. Your Test ends Here! <br>Thank you.</p>
+    <button [routerLink]="['/user/dashboard']">Go back to dashboard</button>
     </span>
 </div>
 

@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
   attemptId : any;
   testName : any;
   testduration: any;
-  // duration : any;
+  marks : any;
   name : any;
   questions :  any[] = [];
   question : any;
@@ -35,7 +35,7 @@ export class TestComponent implements OnInit {
   answers : any[] = [];
   flag : Boolean = true;
   selectedAns : any;
-  nextQuestion_id : any;
+  nextid : any;
   atLevel = 1;
   isCleared :any;
   timer : any;
@@ -56,7 +56,22 @@ export class TestComponent implements OnInit {
 
     }
 
-    this.Tests = this.user.fetchAllTestsDummy(this.userId)
+
+    this.user.fetchAllTests(this.userId)
+      .subscribe(data => {
+        console.log("fetched");
+        console.log(data);
+        
+        this.Tests = data;
+        
+
+      },err => {
+        alert("error fetching the list");
+      })
+
+    //  = this.user.fetchAllTestsDummy(this.userId)
+    
+    
     this.timer = document.getElementsByName('timer')[0] || null;
     }
 
@@ -64,8 +79,8 @@ export class TestComponent implements OnInit {
       this.testlist = false;
       this.individualtest = true;
       this.individualTestDetails = test;
-      this.testName = test.test; 
-      this.testId = test.testid; 
+      this.testName = test.subjectName; 
+      this.testId = test.testId; 
       this.testduration = test.duration;
     }
 
@@ -80,14 +95,26 @@ export class TestComponent implements OnInit {
       // sessionStorage.setItem('test',test.test);
       // sessionStorage.setItem('duration',test.duration);
       // sessionStorage.setItem('testid',this.userId);
-      console.log(`making call with user ${this.userId} with test id ${this.testId} and attempt id ${this.atLevel}`);
+      // console.log(`making call with user ${this.userId} with test id ${this.testId} and attempt id ${this.atLevel}`);
       
       //todo : we need to call the service(with test_id and atLevel) and get all the questions also the attempt id
-      this.questions = this.user.fetchQuestionsDummy();
-      this.question = this.questions[0];
-      this.qindex = this.questions.indexOf(this.question) + 1;
-      this.nextQuestion_id = this.questions[this.qindex].question_id;
-
+      
+      this.user.fetchQuestions(this.testId,this.atLevel,this.userId)
+      .subscribe(data => {
+        console.log(data);
+        this.questions = data;
+        this.question = this.questions[0];
+        this.attemptId = this.question.attempt_id;
+        this.qindex = this.questions.indexOf(this.question) + 1;
+        this.nextid = this.questions[this.qindex].id;  
+      },err => {
+        console.log(err);
+        
+        alert("there was an error fetching the questions for your test");
+      })      
+      
+      // this.questions = this.user.fetchQuestionsDummy();
+      
     }
 
     showQuestion(){
@@ -131,7 +158,7 @@ export class TestComponent implements OnInit {
           } 
         }
         
-        console.log(`${this.hh}:${this.mm}:${this.ss}`);
+        // console.log(`${this.hh}:${this.mm}:${this.ss}`);
         
       },1000);
 
@@ -146,30 +173,31 @@ export class TestComponent implements OnInit {
     display(id : any ){
       // if(this.duration <= 0 ){
       // }
-        this.questions.forEach(q => {if(q.question_id === id){
+        this.questions.forEach(q => {if(q.id === id){
           this.question = q
         } });
+
         this.qindex = this.questions.indexOf(this.question) + 1;
         if(this.questions.length != this.qindex)
-          this.nextQuestion_id = this.questions[this.qindex].question_id;
+          this.nextid = this.questions[this.qindex].id;
         else 
-        this.nextQuestion_id = this.questions[0].question_id;
+        this.nextid = this.questions[0].id;
     }
 
     saveAnswers(qid : any, selectedAns : any){
 
       this.flag=true;  
       this.answers.forEach(a => {
-          if(a.question_id === qid){
+          if(a.id === qid){
             a.answer = selectedAns;
               this.flag = false;
           }
         });
         if(this.flag){
-          this.answers.push({question_id : qid , answer : selectedAns });
+          this.answers.push({id : qid , answer : selectedAns });
         }
       this.selectedAns = '';
-      this.display(this.nextQuestion_id);
+      this.display(this.nextid);
     }
 
     submitTest(answers : any){
@@ -180,8 +208,27 @@ export class TestComponent implements OnInit {
       console.log(this.answers);
       //Todo send data from here to the back end for checking along with the attemptid
       //todo make instruction visible and set level to next level
+      this.user.sendAnswers(this.answers,this.atLevel,this.attemptId,this.testId)
+      .subscribe(data => {
+        console.log(data);
+        this.marks = data.marks;
+        if(data.isPassed){
+          this.isCleared = true;
+        } else {
+          this.isCleared = false;
+        }
+        console.log(this.isCleared);
+        
+      this.showResult(this.isCleared);
+
+      }, err => {
+        console.log(err);
+        
+        alert("there was an error");
+      })
+
+
       // this.testId = sessionStorage.getItem('testid');
-      this.showResult(true);
       
       //! this wont come here
        

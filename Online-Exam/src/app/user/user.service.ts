@@ -12,7 +12,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   fetchAllTests(userId : any):Observable<any[]> {
-    return this.http.get<any>(this.url+`somrthing?userId=${userId}`)
+    console.log(userId);
+    
+    return this.http.get<any>(this.url + `/test/gettoattempt?user_id=${userId}`)
     .pipe(catchError(this.ErrorHandler));
   }
 
@@ -49,8 +51,8 @@ export class UserService {
   ]
   }
 
-  fetchQuestions(test_id:any , level:any) :Observable<any[]>{
-    return this.http.get<any>(this.url+"something")
+  fetchQuestions(test_id:any , level:any,userId:any) :Observable<any[]>{
+    return this.http.post<any>(this.url+`/questions/Addattempt?test_id=${test_id}&level_id=${level}&user_id=${userId}`,{})
     .pipe(catchError(this.ErrorHandler));
   }
 
@@ -92,8 +94,8 @@ export class UserService {
   }
 
   // *this is to verify the answers
-  sendAnswers(anslist : any) :Observable<any[]>{
-    return this.http.post<any>(this.url+"something",anslist);
+  sendAnswers(anslist : any, level : any, attempt: any,test_id : any) :Observable<any>{
+    return this.http.post<any>(this.url+`/attempt/checkresult?level_id=${level}&test_id=${test_id}&attempt_id=${attempt}`,anslist);
   }
 
 
