@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       // todo: call the service and if user doesnt exists set visisbility of #notfound to visible
 
       this.auth.Authenticate(login).subscribe((data) => {
-        console.log(data[0]);
+        // console.log(data[0]);
         // this.route.navigate(['/admin/dashboard']);
 
         // (data);

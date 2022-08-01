@@ -1,0 +1,138 @@
+<!-- <div class="list-of-test" >
+    <div>
+
+    <div *ngFor="let test of Tests; index as i">
+        <p>{{i}} {{test.test}}</p>
+    </div>
+
+</div> -->
+
+<!-- <p>Hi {{name}} dashboard works!</p>
+<a style="cursor:pointer" (click)="Logout()">logout</a> -->
+
+<!-- ===================================== 
+    * List of Test
+============================================== -->
+<div class="greeting" *ngIf="testlist">
+  <h3 class="welcome">All the tests that are available to you</h3>
+  <div class="greetingBox">
+    <p class="greetingMessage">Hello {{ name }},</p>
+    <p class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></p>
+  </div>
+</div>
+<div class="action" *ngIf="testlist">
+  <div class="actionButton">
+    <div
+      *ngFor="let test of Tests; index as i"
+      style="cursor: pointer; background-color: green; margin-bottom: 5px"
+      (click)="displayTest(test)"
+    >
+      <p>{{ i + 1 }}.) {{ test.test }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================== 
+    * Test details
+    ============================================================== -->
+<p *ngIf="!testlist">Do not refresh the page<sup>*</sup></p>
+<div class="action" *ngIf="individualtest">
+  <div class="actionButton">
+    <div >
+        <h3>Test Details</h3>
+      <p>
+        Test Name : <strong>{{ individualTestDetails.test }}</strong><br />
+        Duration (each level): <strong>{{ individualTestDetails.duration }}</strong><br />
+        Level one marks :<strong>{{ individualTestDetails.l_one_req }}</strong><br />
+      </p>
+      <!-- <p> {{i+1}}.) {{test.test}} </p> -->
+      <button
+        class="buttons"
+        type="button"
+        (click)="startTest(individualTestDetails)"
+      >
+        start test
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================== 
+    * Test instructions
+    ============================================================== -->
+<div class="action1 action" *ngIf="starttest">
+  <div class="actionButton1 actionButton">
+    <h2>Instructions</h2>
+    <div class="dos" style="background-color: #aaaaaa">
+      <span>
+        <img
+          src="https://www.clipartmax.com/png/full/34-342615_tick-symbol-tick-symbol.png"
+          width="30px"
+          height="30px"
+        />
+        <h2 style="display:inline-block;"> Do's</h2>
+      </span>
+      <ul>
+        <li>Laptop/Desktop (Fully charged)</li>
+        <li>Uninterrupted Internet Connectivity</li>
+        <li>Rough sheet paper with pen</li>
+      </ul>
+    </div>
+    <div class="dos" style="background-color: #eeeeee">
+      <span>
+        <img
+          src="https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png"
+          width="30px"
+          height="30px"
+        />
+        <h2 style="display:inline-block;">Dont's</h2>
+      </span>
+      <ul>
+        <li>Mobile Phone/Smart watch or any other communication device</li>
+        <li>Headphones/Ear phones/Microphones</li>
+        <li>Notebook/Notes in any form</li>
+      </ul>
+    </div>
+    <!-- <div> -->
+      <button class="buttons1" type="submit"> >Start>></button>
+    <!-- </div> -->
+  </div>
+</div>
+
+<!-- <div class="instruction">
+                <br>
+                 <h2  class="heading"><span style ="border: 1px solid black;background-color: bisque;">Instructions</span></h2>
+                 <br>
+                 <div class="img">
+                    
+                 </div>
+                <div>
+                        <h2>Do's</h2>
+                </div>
+                <div> 
+                    <ul>
+                        <li>Laptop/Desktop (Fully charged)</li>
+                        <li>Uninterrupted Internet Connectivity</li>
+                        <li> Rough sheet paper with pen</li>  
+                    </ul>
+                </div>
+                <br><br>
+                <div class="img1">
+                   <img src="https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png" height="30px"width=30px>
+                </div>
+                <div>
+                    <h2>Dont's</h2>
+                </div>
+                
+                <div>
+                    <ul>
+                        <li>Mobile Phone/Smart watch or any other communication device</li>
+                        <li>Headphones/Ear phones/Microphones</li>
+                        <li>Notebook/Notes in any form</li>  
+                    </ul>
+                </div>
+                <br><br>
+               <div class="start">
+                  <a href="#">Start Test</a>
+               </div>
+        -->

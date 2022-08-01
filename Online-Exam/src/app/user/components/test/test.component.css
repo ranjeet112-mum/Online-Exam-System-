@@ -153,3 +153,29 @@ button:hover{
 .allUpcoming:hover {
     color:white;
 }
+.action1 {
+    height: 450px;
+}
+.actionButton1{
+    width: 55%;
+}
+.buttons {
+    height: 30%;
+    background-color: rgba(50, 255, 50, 0.6);
+}
+.dos {
+    width: 70%;
+}
+.dos li {
+    list-style-type: disc;
+    font-size:14px;
+}
+.buttons1 {
+    height: 20%;
+    width: 30%;
+    background-color: rgba(50, 255, 50, 0.6);
+}
+
+.buttons:hover .buttons1:hover{
+    
+}

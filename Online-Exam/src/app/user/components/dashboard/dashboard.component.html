@@ -1,2 +1,34 @@
-<p>Hi {{name}} dashboard works!</p>
-<a style="cursor:pointer" (click)="Logout()">logout</a>
+<!-- <p>Hi {{name}} dashboard works!</p>
+<a style="cursor:pointer" (click)="Logout()">logout</a> -->
+<div class="greeting">
+    <h2 class="welcome">Welcome to dashboard!</h2>
+    <div class="greetingBox">
+        <p class="greetingMessage">Hello {{name}},</p>
+            <p class="logOut"><a (click)="Logout()" class="logOutLink">Log Out</a></p>
+
+
+    </div>
+</div>
+<div class="action">
+    <!-- <div class="actionDiv"> -->
+        <!-- <div class="miscellaneousBox"> -->
+        <!-- <div class="mainBlock"> 
+            <h2 class="welcome">Upcoming Test</h2>
+            <ul>
+                <a href="#" class="upcoming"><li>Java Test </li></a>
+                <a href="#" class="upcoming"><li>.Net Test </li></a>
+                <a href="#" class="upcoming"><li>Communicatons Test </li></a>
+                <a href="#" class="allUpcoming upcoming"><li>All test</li></a>
+            </ul>
+        </div> -->
+
+        <!-- </div> -->
+        <div class="actionButton">
+            <h2>Action Links</h2>
+            <button [routerLink]="['/user/test']" type="button" class="create">start a new Test</button>
+            <!-- <button [routerLink]="['/admin/deletetest']" type="button" class="delete">delete a Test</button> -->
+            <button [routerLink]="['/user/analyze']" type="button" class="analyze">Previous Test</button>
+        </div>
+    <!-- </div> -->
+
+</div>

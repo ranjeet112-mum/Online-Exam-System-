@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TestComponent } from './components/test/test.component';
 import { UserComponent } from './user.component';
+import { AnalyzeResultsComponent } from './components/analyze-results/analyze-results.component';
 
 const routes: Routes = [
   {
@@ -10,8 +12,17 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
-      }
+        component: DashboardComponent,
+
+      },{
+        path: 'test',
+        component: TestComponent,
+
+      },{
+        path: 'analyze',
+        component: AnalyzeResultsComponent,
+
+      },
     ]
   }
 ];
