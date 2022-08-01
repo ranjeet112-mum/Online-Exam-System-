@@ -81,3 +81,32 @@ create table Questionsadvanced (
 	options_four nvarchar(100) not null,  
 	options_correct nvarchar(100) not null,  
 );
+
+
+Select * from Users where city = {city variable} and qualification = {qualification variable} and user_id in ( select user_id from Attempts where test_id = {test variable} And level_cleared = {level variable} and (L_one_marks > {marks variable} or L_two_marks > {marks variable} or L_three_marks > {marks variable} ))
+
+
+test duration,l1_req is comming with list test;
+
+[ans1,ans2......ans15] ==> 12/15
+
+user::: 
+1. localhost:5000/api/test/fetchtest?user_id=1?testid=10&level=1/// attempt{} <==
+   //localhost:5000/api/test/fetchtest?user_id=1?testid=10&level=2
+// ?attemptid=1&testmarks=12&level=1
+
+2. student kitna test uska details {  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
