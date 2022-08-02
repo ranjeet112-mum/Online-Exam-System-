@@ -19,6 +19,12 @@ export class AnalyzeResultsComponent implements OnInit {
   qualifications : string = "";
   city : string = "";
   constructor(private cookie : CookieService,private route : Router,private admins : AdminService) {
+    
+    if(sessionStorage.getItem('isAuthorized') != null){
+      this.adminid = sessionStorage.getItem('userId');
+      this.name = sessionStorage.getItem('name');
+    }
+    
     this.admins.fetchTestList().subscribe(data => {
       this.testlist = data;
       // console.log(this.testlist);
@@ -29,6 +35,11 @@ export class AnalyzeResultsComponent implements OnInit {
       // console.log(err);
       
     })
+
+    this.admins.getAllAnalysis(this.adminid)
+    .subscribe(data => this.students = data, err => {alert("error fetch analysis"); console.log(err);
+    })
+
    }
   
 
@@ -37,10 +48,7 @@ export class AnalyzeResultsComponent implements OnInit {
     //   this.adminid = this.cookie.get('userId');
     //   this.name = this.cookie.get('name');
     // }
-    if(sessionStorage.getItem('isAuthorized') != null){
-      this.adminid = sessionStorage.getItem('userId');
-      this.name = sessionStorage.getItem('name');
-    }
+    
   }
 
   search(){
@@ -77,15 +85,17 @@ export class AnalyzeResultsComponent implements OnInit {
     Name :            ${student.name}
     gender  :         ${student.gender}
     Birthday :        ${student.dateOfBirth}
-    email :           ${student.email}
+    email :            ${student.email}
     phone :           ${student.phone}
-    city  :           ${student.city}
+    city  :            ${student.city}
     College :         ${student.college}
-    qualifications :  ${student.qualification}
+    qualifications : ${student.qualification}
     Passing Year   :  ${student.yearOfPassing}
-    Test :            ${student.subjectName}
+    Test :                ${student.subjectName}
     level cleared :   ${student.levelCleared}
-
+    L1 marks :        ${student.lOneMarks || 0}
+    L2 marks :        ${student.ltwoMarks || 0} 
+    L3 marks :        ${student.lthreeMarks || 0}  
     `)
   }
 

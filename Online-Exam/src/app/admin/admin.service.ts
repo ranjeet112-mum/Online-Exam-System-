@@ -50,4 +50,8 @@ export class AdminService {
     .pipe(catchError(this.ErrorHandler));
   }
 
+  getAllAnalysis(admin_id : any) : Observable<any[]> {
+      return this.http.get<any>(this.url+`admin/getallanalysis?admin_id=${admin_id}`)
+      .pipe(catchError(this.ErrorHandler));
+  }
 }

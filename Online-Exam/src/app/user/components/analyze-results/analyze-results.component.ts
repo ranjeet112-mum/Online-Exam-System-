@@ -32,6 +32,26 @@ export class AnalyzeResultsComponent implements OnInit {
   
 }
   );  }
+
+  displayCards(test : any){
+    alert(`
+    test is here
+    Name :            ${test.name}
+    gender  :         ${test.gender}
+    Birthday :        ${test.dateOfBirth}
+    email :            ${test.email}
+    phone :           ${test.phone}
+    city  :            ${test.city}
+    College :         ${test.college}
+    qualifications : ${test.qualification}
+    Passing Year   :  ${test.yearOfPassing}
+    Test :                ${test.subjectName}
+    level cleared :   ${test.levelCleared}
+    L1 marks :        ${test.lOneMarks || 0}
+    L2 marks :        ${test.ltwoMarks || 0} 
+    L3 marks :        ${test.lthreeMarks || 0}  
+    `)
+  }
   
   Logout(){
     sessionStorage.clear();

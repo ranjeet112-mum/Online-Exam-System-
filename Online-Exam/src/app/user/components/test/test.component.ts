@@ -236,6 +236,7 @@ export class TestComponent implements OnInit {
     }
 
     showResult(isCleared : any){
+      this.answers = [];
       if(this.atLevel === 3){
         alert('Your Test is over, Please proceed to the dashboard');
         this.route.navigate(['user/dashboard']);

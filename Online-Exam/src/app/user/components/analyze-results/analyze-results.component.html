@@ -38,10 +38,17 @@
         <div class="viewArea">
             
             <!-- class="individual" -->
-            <div *ngFor="let test of Tests;index as i">
+            <!-- <div *ngFor="let test of Tests;index as i">
                 <p>{{i+1}}.)&nbsp;{{test.subjectName}} {{test.levelCleared}}</p> 
+            </div> -->
+            <div class="cards" *ngFor="let test of Tests;index as i">
+                <table>
+                <tr><td>{{i+1}}.) &nbsp;</td><td>Test : <strong>{{test.subjectName}}</strong></td><td>|</td> <td>level Cleared : <strong>{{test.levelCleared}}</strong></td></tr>
+                 <!-- <!-- <tr><td>&nbsp;</td><td>Test : <strong>{{test.subjectName}}</strong></td><td>|</td> <td>College : <strong>{{test.college}}</strong></td></tr> -->
+                 <tr><td><button class="viewdata" type="button" (click)="displayCards(test)" > View</button></td></tr> 
+                     
+                </table>
             </div>
-
         </div>
     </div>
 </div>
