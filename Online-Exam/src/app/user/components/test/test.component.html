@@ -135,14 +135,15 @@
 </div>
 <div class="action1 action" *ngIf="Resultpage">
 
-
+<div class="result" [style.background-color]="isCleared ? 'rgba(50, 255, 50, 0.6)' : 'rgba(255, 50, 50, 0.6)'">
     <span *ngIf="isCleared"><p>Congratulations you have scored {{marks}} and cleared this level, you may now proceed to next level</p>
     
-    <button (click)="startTest(testId)"> Next </button>
+    <button class="passfail-button" (click)="startTest(testId)"> Next </button>
         </span>
     <span *ngIf="!isCleared"><p>Sorry but you scored {{marks}} and did not clear this level. Your Test ends Here! <br>Thank you.</p>
-    <button [routerLink]="['/user/dashboard']">Go back to dashboard</button>
+    <button class="passfail-button" [routerLink]="['/user/dashboard']">Go back to dashboard</button>
     </span>
+    </div>
 </div>
 
 

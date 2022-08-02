@@ -54,17 +54,41 @@ export class AnalyzeResultsComponent implements OnInit {
     .subscribe(data => {
         // console.log(data);
       this.students = data;
-      alert(`Fetched ${this.students.length} from your search`);
+      // console.log(data);
+      
+      // alert(`Fetched ${this.students.length} from your search`);
     },err => {
       // console.log(err)
       alert("Error while fetching the record.");
-      this.route.navigate(['/admin/dashboard']);
+      // this.route.navigate(['/admin/dashboard']);
     }
     
     );
 
     
   }
+
+  displayCards(student : any) {
+    // console.log(student);
+    
+    
+    alert(`
+    student is here
+    Name :            ${student.name}
+    gender  :         ${student.gender}
+    Birthday :        ${student.dateOfBirth}
+    email :           ${student.email}
+    phone :           ${student.phone}
+    city  :           ${student.city}
+    College :         ${student.college}
+    qualifications :  ${student.qualification}
+    Passing Year   :  ${student.yearOfPassing}
+    Test :            ${student.subjectName}
+    level cleared :   ${student.levelCleared}
+
+    `)
+  }
+
 
   Logout(){
     // this.cookie.deleteAll();

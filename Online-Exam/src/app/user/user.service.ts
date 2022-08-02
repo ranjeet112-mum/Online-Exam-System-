@@ -102,7 +102,7 @@ export class UserService {
 
   // *this is for the analysis
   fetchMyAttemptList(userId : any) : Observable<any[]> {
-    return this.http.get<any>(this.url+"something")
+    return this.http.get<any>(this.url+`/user/getanalysis?user_id=${userId}`)
     .pipe(catchError(this.ErrorHandler));
   }
   ErrorHandler(error : HttpErrorResponse){
@@ -110,3 +110,4 @@ export class UserService {
   }
 
 }
+

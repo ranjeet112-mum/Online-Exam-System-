@@ -46,7 +46,7 @@ export class AdminService {
   }
 
   getAnalysis(test_id : number,level:number,marks:number,qualification:string,city:string) : Observable<any>{
-    return this.http.get<any>(this.url+`attempt/getanalysis?test_id=${test_id}&level=${level}&marks=${marks}&qualification=${qualification}&city=${city}`)
+    return this.http.get<any>(this.url+`admin/getanalysis?test_id=${test_id}&level=${level}&marks=${marks}&qualification=${qualification}&city=${city}`)
     .pipe(catchError(this.ErrorHandler));
   }
 

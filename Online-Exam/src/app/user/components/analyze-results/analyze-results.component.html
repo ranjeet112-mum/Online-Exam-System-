@@ -38,8 +38,8 @@
         <div class="viewArea">
             
             <!-- class="individual" -->
-            <div *ngFor="let test of Tests">
-                congratulations&nbsp;&nbsp;&nbsp; <p>{{test}}</p> 
+            <div *ngFor="let test of Tests;index as i">
+                <p>{{i+1}}.)&nbsp;{{test.subjectName}} {{test.levelCleared}}</p> 
             </div>
 
         </div>

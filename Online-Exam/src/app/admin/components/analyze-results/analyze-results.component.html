@@ -9,7 +9,7 @@
 </div>
 <div class="action">
     <div class="formBox">
-        <form (ngSubmit)="search()">
+        <form (ngSubmit)="search()" class="forms">
             <div class="formQuery">
                 <span style="display: flex;flex-direction:column;">
                     test name : 
@@ -25,11 +25,23 @@
                     <option value={{3}}>3</option>
                 </select>
                 </span>
+                <span style="display: flex;flex-direction:column;">
+                    Cut off marks: 
                 <input type="number" name="cutoff" placeholder="cut off" [(ngModel)]="cutoff">
+                </span>
+                
+                <span style="display: flex;flex-direction:column;">
+                    qualifications: 
                 <input type="text" name="qualifications" placeholder="qualifications" [(ngModel)]="qualifications">
+                </span>
+                <span style="display: flex;flex-direction:column;">
+                    city: 
                 <input type="text" name="city" placeholder="city" [(ngModel)]="city">
-
+                    </span>
+                    <span style="display: flex;flex-direction:column;">
+                         
                 <input type="submit" >
+                </span>
             </div>
         </form>
         <hr>
@@ -37,10 +49,15 @@
 
         <div class="viewArea">
             
-            <!-- class="individual" -->
-            <div *ngFor="let student of students">
-                congratulations&nbsp;&nbsp;&nbsp; <p>{{student.student}}</p> 
+            <div class="cards" *ngFor="let student of students;index as i">
+                <table>
+                <tr><td>{{i+1}}.) &nbsp;</td><td>name : <strong>{{student.name}}</strong></td><td>|</td> <td> Qualifications : <strong>{{student.qualification}}</strong></td></tr>
+                 <tr><td>&nbsp;</td><td>Test : <strong>{{student.subjectName}}</strong></td><td>|</td> <td>College : <strong>{{student.college}}</strong></td><td><button class="viewdata" type="button" (click)="displayCards(student)" > View</button></td></tr>
+                 <tr><td>&nbsp;</td><td>level Cleared : <strong>{{student.levelCleared}}</strong></td><td>|</td> <td>Year Of Passing : <strong>{{student.yearOfPassing}}</strong></td></tr>
+                     
+                </table>
             </div>
+
 
         </div>
     </div>

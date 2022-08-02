@@ -25,6 +25,8 @@ export class AnalyzeResultsComponent implements OnInit {
     // Todo  fetch the list of past data from here!
   this.user.fetchMyAttemptList(this.userId).subscribe(data => {
     this.Tests = data;
+    console.log(this.Tests);
+    
   },err => {alert("error in user analyze component");
   console.log(err);
   
