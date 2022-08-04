@@ -1,5 +1,0 @@
-Plese take special care of the following:
-
-1. Do not ever make changes to the Master branch Directly, always create a new branch locally and upload that new branch to GitHub and then create a pull request to be merged to the Master. 
-2. Use good Variable name, and write good comments were ever necessary.
-3. Try to follow proper nomenclature for naming : camel case for Variables (heightOfStudent) and pascal case for class and Functons (CalcAgeFromDateOfBirth )
